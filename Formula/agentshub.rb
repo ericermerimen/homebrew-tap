@@ -2,7 +2,7 @@ class Agentshub < Formula
   desc "macOS menu bar app for monitoring Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentshub"
   url "https://github.com/ericermerimen/agentshub/releases/download/v0.2.1/AgentsHub-v0.2.1-macos.tar.gz"
-  sha256 "c70566810f24005b0fe48a8f74c8aea57e9259c3064bfc0c8400f1839d645cfc"
+  sha256 "3673fae8985b9a9deaef6717afdb6633cece852722bd6174ea09e39ba6ccd182"
 
   depends_on :macos
   depends_on macos: :sonoma
