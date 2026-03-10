@@ -1,9 +1,8 @@
 class Agentshub < Formula
   desc "macOS menu bar app for monitoring Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentshub"
-  # URL and sha256 are updated automatically by the release workflow
-  url "https://github.com/ericermerimen/agentshub/releases/download/v0.1.0/AgentsHub-v0.1.0-macos.tar.gz"
-  sha256 "PLACEHOLDER"
+  url "https://github.com/ericermerimen/agentshub/releases/download/v0.2.0/AgentsHub-v0.2.0-macos.tar.gz"
+  sha256 "bfff4e88b1826938c4d6f7314ad0af42f7744a6fa867f28334ff0e4bf5cb7006"
 
   depends_on :macos
   depends_on macos: :sonoma
