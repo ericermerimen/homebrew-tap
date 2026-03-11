@@ -1,8 +1,8 @@
 class Agentping < Formula
   desc "macOS menu bar app for monitoring Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentping"
-  url "https://github.com/ericermerimen/agentping/releases/download/v0.6.7/AgentPing-v0.6.7-macos.tar.gz"
-  sha256 "406682e6b8d64cceb5a5828260984122bdded124a09a5401c66388891e45d343"
+  url "https://github.com/ericermerimen/agentping/releases/download/v0.6.8/AgentPing-v0.6.8-macos.tar.gz"
+  sha256 "3ea616ee4ef53efd2ba2832e26574f8d68a7db23764db94531ca687b0648918a"
 
   depends_on :macos
   depends_on macos: :sonoma
@@ -16,14 +16,15 @@ class Agentping < Formula
     <<~EOS
 
       ╔══════════════════════════════════════════════════╗
-      ║  IMPORTANT: Run this to start AgentPing         ║
+      ║  Run these commands to get started:              ║
       ╚══════════════════════════════════════════════════╝
 
-        open #{opt_prefix}/AgentPing.app
+        brew services start agentping
 
-      To add to ~/Applications (Spotlight + Launchpad):
+      This launches AgentPing and auto-starts it on login.
+      After future upgrades, run:
 
-        mkdir -p ~/Applications && cp -pR #{opt_prefix}/AgentPing.app ~/Applications/
+        brew upgrade agentping && brew services restart agentping
 
       ──────────────────────────────────────────────────
       Next steps:
