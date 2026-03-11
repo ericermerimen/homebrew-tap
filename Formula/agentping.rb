@@ -1,8 +1,8 @@
 class Agentping < Formula
   desc "macOS menu bar app for monitoring Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentping"
-  url "https://github.com/ericermerimen/agentping/releases/download/v0.3.0/AgentPing-v0.3.0-macos.tar.gz"
-  sha256 "783d3516f0b9ca03fca03246bf998ac16791eb9c27bd8a489283f1c65fac23c9"
+  url "https://github.com/ericermerimen/agentping/releases/download/v0.4.0/AgentPing-v0.4.0-macos.tar.gz"
+  sha256 "94410464f6da7065c00567ed70be60196d9644c40b8782e993be794e5902432e"
 
   depends_on :macos
   depends_on macos: :sonoma
@@ -12,13 +12,13 @@ class Agentping < Formula
     bin.install_symlink prefix/"AgentPing.app/Contents/MacOS/agentping"
   end
 
+  def post_install
+    ln_sf prefix/"AgentPing.app", "/Applications/AgentPing.app"
+  end
+
   def caveats
     <<~EOS
-      AgentPing.app has been installed to:
-        #{prefix}/AgentPing.app
-
-      To start the menu bar app:
-        open #{prefix}/AgentPing.app
+      AgentPing.app has been linked to /Applications.
 
       To set up Claude Code hooks, open AgentPing preferences
       and click "Copy Hook Config to Clipboard", then paste
