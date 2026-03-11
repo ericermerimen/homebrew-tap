@@ -1,8 +1,8 @@
 class Agentping < Formula
   desc "macOS menu bar app for monitoring Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentping"
-  url "https://github.com/ericermerimen/agentping/releases/download/v0.6.4/AgentPing-v0.6.4-macos.tar.gz"
-  sha256 "7f4b88f909693ab5a4ff19b7f9acd2edc3a36660a8614075ae1ff6b6f77114b6"
+  url "https://github.com/ericermerimen/agentping/releases/download/v0.6.5/AgentPing-v0.6.5-macos.tar.gz"
+  sha256 "29a6133dca588c4cdb8025e3e40b8245efb3826160cd77d07aa859f2a78d89b1"
 
   depends_on :macos
   depends_on macos: :sonoma
@@ -14,22 +14,9 @@ class Agentping < Formula
 
   def post_install
     user_apps = Pathname(Dir.home)/"Applications"
-    user_apps.mkpath
-    target = user_apps/"AgentPing.app"
-    target.rmtree if target.exist?
-    FileUtils.cp_r "#{prefix}/AgentPing.app", target.to_s
-    ohai "AgentPing.app installed to #{user_apps}/"
-
-    # Clean up old /Applications copy if it exists
-    system_target = Pathname("/Applications/AgentPing.app")
-    if system_target.exist?
-      begin
-        system_target.rmtree
-        ohai "Removed old copy from /Applications/"
-      rescue Errno::EACCES
-        opoo "Old AgentPing.app in /Applications/ can be removed with: sudo rm -rf /Applications/AgentPing.app"
-      end
-    end
+    system "mkdir", "-p", user_apps.to_s
+    system "rm", "-rf", (user_apps/"AgentPing.app").to_s
+    system "cp", "-pR", "#{prefix}/AgentPing.app", user_apps.to_s
   end
 
   def caveats
