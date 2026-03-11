@@ -1,8 +1,8 @@
 class Agentping < Formula
   desc "macOS menu bar app for monitoring Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentping"
-  url "https://github.com/ericermerimen/agentping/releases/download/v0.5.2/AgentPing-v0.5.2-macos.tar.gz"
-  sha256 "e0cc4f636aac21415277ddfc40646d0cac98ffa64701a5bbd4228f9414879595"
+  url "https://github.com/ericermerimen/agentping/releases/download/v0.6.0/AgentPing-v0.6.0-macos.tar.gz"
+  sha256 "fa6b9e7c3ad6800fc595ad76a2b5f6f6f4a5d8ea5d232f4401cd18d559310259"
 
   depends_on :macos
   depends_on macos: :sonoma
