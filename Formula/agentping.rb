@@ -1,8 +1,8 @@
 class Agentping < Formula
   desc "macOS menu bar app for monitoring Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentping"
-  url "https://github.com/ericermerimen/agentping/releases/download/v0.6.3/AgentPing-v0.6.3-macos.tar.gz"
-  sha256 "03edf66f723365eda5e2236c7671a7354f1b0ec4515490e1e7f84f92bc631938"
+  url "https://github.com/ericermerimen/agentping/releases/download/v0.6.4/AgentPing-v0.6.4-macos.tar.gz"
+  sha256 "7f4b88f909693ab5a4ff19b7f9acd2edc3a36660a8614075ae1ff6b6f77114b6"
 
   depends_on :macos
   depends_on macos: :sonoma
@@ -13,16 +13,22 @@ class Agentping < Formula
   end
 
   def post_install
-    ohai "Installing AgentPing.app to /Applications..."
-    target = Pathname("/Applications/AgentPing.app")
-    begin
-      target.rmtree if target.exist?
-      FileUtils.cp_r "#{prefix}/AgentPing.app", "/Applications/"
-      ohai "AgentPing.app installed to /Applications/"
-      ohai "Relaunch AgentPing to use the new version."
-    rescue Errno::EACCES
-      opoo "Could not copy to /Applications/ (permission denied)."
-      opoo "Run: sudo cp -pR #{opt_prefix}/AgentPing.app /Applications/"
+    user_apps = Pathname(Dir.home)/"Applications"
+    user_apps.mkpath
+    target = user_apps/"AgentPing.app"
+    target.rmtree if target.exist?
+    FileUtils.cp_r "#{prefix}/AgentPing.app", target.to_s
+    ohai "AgentPing.app installed to #{user_apps}/"
+
+    # Clean up old /Applications copy if it exists
+    system_target = Pathname("/Applications/AgentPing.app")
+    if system_target.exist?
+      begin
+        system_target.rmtree
+        ohai "Removed old copy from /Applications/"
+      rescue Errno::EACCES
+        opoo "Old AgentPing.app in /Applications/ can be removed with: sudo rm -rf /Applications/AgentPing.app"
+      end
     end
   end
 
