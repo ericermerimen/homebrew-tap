@@ -1,8 +1,8 @@
 class Agentping < Formula
   desc "macOS menu bar app for monitoring Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentping"
-  url "https://github.com/ericermerimen/agentping/releases/download/v0.6.11/AgentPing-v0.6.11-macos.tar.gz"
-  sha256 "a74bbcbc83429c24d96c59a5460c66fbc6ff207ade305f98dd5ec2001ac79d8f"
+  url "https://github.com/ericermerimen/agentping/releases/download/v0.6.12/AgentPing-v0.6.12-macos.tar.gz"
+  sha256 "9f51654da03e76fc68bf4b49616bb1eb36da0f7a15c33e2abcff1eae28790bbe"
 
   depends_on :macos
   depends_on macos: :sonoma
@@ -35,6 +35,11 @@ class Agentping < Formula
         4. Restart your Claude Code sessions
 
     EOS
+  end
+
+  def post_install
+    # Kill any running AgentPing so brew services restart picks up the new binary
+    quiet_system "pkill", "-x", "AgentPingApp"
   end
 
   service do
