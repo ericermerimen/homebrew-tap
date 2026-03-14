@@ -1,8 +1,8 @@
 class Agentping < Formula
   desc "macOS menu bar app for monitoring Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentping"
-  url "https://github.com/ericermerimen/agentping/releases/download/v0.10.1/AgentPing-v0.10.1-macos.tar.gz"
-  sha256 "199e4631ed295836753983920c7882e8842ef9930ceec754f6f4bbda80ec5d0e"
+  url "https://github.com/ericermerimen/agentping/releases/download/v0.10.2/AgentPing-v0.10.2-macos.tar.gz"
+  sha256 "7c50ab11dc3723a7633b01c34df5d2dee8b8ffc2c67da791e7aba23b4e8877d4"
 
   depends_on :macos
   depends_on macos: :sonoma
@@ -14,26 +14,20 @@ class Agentping < Formula
 
   def caveats
     <<~EOS
-
-      ╔══════════════════════════════════════════════════╗
-      ║  Run these commands to get started:              ║
-      ╚══════════════════════════════════════════════════╝
+      To start AgentPing and auto-launch on login:
 
         brew services start agentping
 
-      This launches AgentPing and auto-starts it on login.
-      After future upgrades, run:
+      After future upgrades:
 
         brew upgrade agentping && brew services restart agentping
 
-      ──────────────────────────────────────────────────
       Next steps:
         1. Grant Accessibility access when prompted
            (System Settings > Privacy & Security > Accessibility)
         2. Open Preferences > "Copy Hook Config to Clipboard"
         3. Paste into ~/.claude/settings.json
         4. Restart your Claude Code sessions
-
     EOS
   end
 
