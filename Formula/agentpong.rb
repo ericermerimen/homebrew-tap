@@ -1,8 +1,8 @@
 class Agentpong < Formula
   desc "Pixel art room with husky pet that monitors Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentpong"
-  url "https://github.com/ericermerimen/agentpong/releases/download/v1.1.2/AgentPong-v1.1.2-macos.tar.gz"
-  sha256 "5a363a7ea99fd3b723226bb4ba65009aa1ebe3a8868804debfa5a44ca36c537e"
+  url "https://github.com/ericermerimen/agentpong/releases/download/v1.2.0/AgentPong-v1.2.0-macos.tar.gz"
+  sha256 "c44dc90b71c339147ac84f33342cb766f24b381212f2177adce886e2bba09ff1"
 
   depends_on :macos
   depends_on macos: :sonoma
@@ -30,10 +30,8 @@ class Agentpong < Formula
 
   def post_install
     quiet_system "pkill", "-x", "AgentPong"
-    user_apps = File.expand_path("~/Applications")
-    system "mkdir", "-p", user_apps
-    system "rm", "-rf", "#{user_apps}/AgentPong.app"
-    system "cp", "-R", "#{opt_prefix}/AgentPong.app", "#{user_apps}/AgentPong.app"
+    quiet_system "rm", "-rf", "/Applications/AgentPong.app"
+    quiet_system "cp", "-R", "#{opt_prefix}/AgentPong.app", "/Applications/AgentPong.app"
   end
 
   service do
