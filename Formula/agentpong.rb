@@ -2,7 +2,7 @@ class Agentpong < Formula
   desc "Pixel art room with husky pet that monitors Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentpong"
   url "https://github.com/ericermerimen/agentpong/releases/download/v1.2.0/AgentPong-v1.2.0-macos.tar.gz"
-  sha256 "c44dc90b71c339147ac84f33342cb766f24b381212f2177adce886e2bba09ff1"
+  sha256 "2ade6898aa012f699344a9e372cec6e2b45b1273efe721b3aafa8f8ecfd4d79f"
 
   depends_on :macos
   depends_on macos: :sonoma
