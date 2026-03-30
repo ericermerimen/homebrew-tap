@@ -1,8 +1,17 @@
+# Homebrew formula for AgentPong
+# Add to your tap: cp Formula/agentpong.rb $(brew --repository)/Library/Taps/YOUR_TAP/Formula/
+#
+# To update after a new release:
+#   1. Run `make archive` to build the .tar.gz
+#   2. Upload to GitHub releases
+#   3. Update url + sha256 below
+#   4. Push to your tap repo
+
 class Agentpong < Formula
   desc "Pixel art room with husky pet that monitors Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentpong"
-  url "https://github.com/ericermerimen/agentpong/releases/download/v1.2.0/AgentPong-v1.2.0-macos.tar.gz"
-  sha256 "2ade6898aa012f699344a9e372cec6e2b45b1273efe721b3aafa8f8ecfd4d79f"
+  url "https://github.com/ericermerimen/agentpong/releases/download/v1.2.1/AgentPong-v1.2.1-macos.tar.gz"
+  sha256 "416ebcb08ec0632872cded6a518152a034ebb0e674e856cf07c62450812b9ad1"
 
   depends_on :macos
   depends_on macos: :sonoma
@@ -14,6 +23,10 @@ class Agentpong < Formula
 
   def caveats
     <<~EOS
+      Add to Applications (for Launchpad):
+
+        cp -R $(brew --prefix)/opt/agentpong/AgentPong.app /Applications/
+
       Start AgentPong and auto-launch on login:
 
         brew services start agentpong
@@ -30,6 +43,7 @@ class Agentpong < Formula
 
   def post_install
     quiet_system "pkill", "-x", "AgentPong"
+    # Copy to /Applications so it appears as a real app (not alias) in Launchpad
     quiet_system "rm", "-rf", "/Applications/AgentPong.app"
     quiet_system "cp", "-R", "#{opt_prefix}/AgentPong.app", "/Applications/AgentPong.app"
   end
