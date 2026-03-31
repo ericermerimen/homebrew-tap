@@ -13,6 +13,7 @@ cask "agentpong" do
   binary "#{appdir}/AgentPong.app/Contents/MacOS/AgentPong", target: "agentpong"
 
   postflight do
+    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/AgentPong.app"]
     system "pkill", "-x", "AgentPong"
   end
 

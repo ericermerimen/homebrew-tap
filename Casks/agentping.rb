@@ -13,6 +13,7 @@ cask "agentping" do
   binary "#{appdir}/AgentPing.app/Contents/MacOS/agentping"
 
   postflight do
+    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/AgentPing.app"]
     system "pkill", "-x", "AgentPingApp"
   end
 
