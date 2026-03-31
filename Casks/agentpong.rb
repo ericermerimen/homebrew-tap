@@ -1,8 +1,8 @@
 cask "agentpong" do
-  version "1.2.2"
-  sha256 "2b02d8428228d65da1de0dfe1f0c3c79454df4f633293dfce73f23eaf3231071"
+  version ""
+  sha256 "1a69a21a0ad236fd6e962f6215ec7ce0ecaabb6504178850419723f248ccec4b"
 
-  url "https://github.com/ericermerimen/agentpong/releases/download/v#{version}/AgentPong-v#{version}-macos.tar.gz"
+  url "https://github.com/ericermerimen/agentpong/releases/download/v1.2.3/AgentPong-v1.2.3-macos.tar.gz"
   name "AgentPong"
   desc "Pixel art room with husky pet that monitors Claude Code sessions"
   homepage "https://github.com/ericermerimen/agentpong"
@@ -13,7 +13,6 @@ cask "agentpong" do
   binary "#{appdir}/AgentPong.app/Contents/MacOS/AgentPong", target: "agentpong"
 
   postflight do
-    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/AgentPong.app"]
     system "pkill", "-x", "AgentPong"
   end
 
@@ -23,6 +22,5 @@ cask "agentpong" do
       2. Run `agentpong setup` to configure Claude Code hooks
 
     AgentPong updates automatically via Sparkle.
-    To enable launch at login, use the app's menu.
   EOS
 end
